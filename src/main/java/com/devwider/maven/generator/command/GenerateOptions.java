@@ -18,7 +18,7 @@ public class GenerateOptions extends DefaultOptions {
     @CommandLine.Option(names = {"-f", "--jar-file"})
     private File jar;
 
-    @CommandLine.Option(names = {"-g", "--group-id"}, defaultValue = "com.serotonin")
+    @CommandLine.Option(names = {"-g", "--group-id"}, required = true)
     private String groupId;
 
     @CommandLine.Option(names = {"-V", "--artifact-version"}, defaultValue = "1.0.0")

@@ -18,13 +18,16 @@ import java.util.stream.Stream;
 @Log4j2
 public class ArtifactGenerator {
 
-    private static final String GROUP_ID = "com.serotonin";
     private static final String VERSION = "1.0.0";
     private static final String PACKAGING = "jar";
 
-    public static void execute(Path path) {
-        _executeCommands(_commands(_jars(path), GROUP_ID,
+    public static void execute(Path path, String groupId) {
+        _executeCommands(_commands(_jars(path), groupId,
                 VERSION, PACKAGING));
+    }
+
+    public static void execute(Path path, String groupId, String version) {
+        _executeCommands(_commands(_jars(path), groupId, version, PACKAGING));
     }
 
     public static void execute(Path path, String groupId,
@@ -32,9 +35,19 @@ public class ArtifactGenerator {
         _executeCommands(_commands(_jars(path), groupId, version, packaging));
     }
 
-    public static void execute(File jar) {
-        _executeCommands(_commands(Stream.of(jar).collect(Collectors.toList()),GROUP_ID,
+    public static void executePackaging(Path path, String groupId, String packaging) {
+        _executeCommands(_commands(_jars(path), groupId, VERSION, packaging));
+    }
+
+    public static void execute(File jar, String groupId) {
+        _executeCommands(_commands(Stream.of(jar).collect(Collectors.toList()),groupId,
                 VERSION, PACKAGING));
+    }
+
+    public static void execute(File jar, String groupId,
+                               String version) {
+        _executeCommands(_commands(Stream.of(jar).collect(Collectors.toList()),groupId,
+                version,PACKAGING));
     }
 
     public static void execute(File jar, String groupId,
@@ -43,14 +56,29 @@ public class ArtifactGenerator {
                 version,packaging));
     }
 
-    public static String dependency(File jar) {
-        return String.join("\n", _dependencies(Stream.of(jar).collect(Collectors.toList()), GROUP_ID,
+    public static void executePackaging(File jar, String groupId, String packaging) {
+        _executeCommands(_commands(Stream.of(jar).collect(Collectors.toList()),groupId,
+                VERSION,packaging));
+    }
+
+    public static String dependency(File jar, String groupId) {
+        return String.join("\n", _dependencies(Stream.of(jar).collect(Collectors.toList()), groupId,
                 VERSION));
     }
 
-    public static String dependencies(Path path) {
-        return String.join("\n", _dependencies(_jars(path),GROUP_ID,
+    public static String dependency(File jar, String groupId, String version) {
+        return String.join("\n", _dependencies(Stream.of(jar).collect(Collectors.toList()), groupId,
+                version));
+    }
+
+    public static String dependencies(Path path, String groupId) {
+        return String.join("\n", _dependencies(_jars(path),groupId,
                 VERSION));
+    }
+
+    public static String dependencies(Path path, String groupId, String version) {
+        return String.join("\n", _dependencies(_jars(path),groupId,
+                version));
     }
 
     private static List<String> _dependencies(List<File> jars, String groupId,
@@ -64,7 +92,7 @@ public class ArtifactGenerator {
                     "            <version>{2}</version>\n" +
                     "        </dependency>", groupId,
                     file.getName().replace(".jar",""),
-                    version);
+                    version == null ? VERSION : version);
 
             deps.add(dep);
         }
@@ -89,7 +117,8 @@ public class ArtifactGenerator {
                     "-Dversion={4} " +
                     "-Dpackaging={5} " +
                     "-DgeneratePom=true", file.getParent(), file.getName(), groupId
-                    , file.getName().replace(".jar",""), version, packaging);
+                    , file.getName().replace(".jar",""), version == null ? VERSION : version,
+                    packaging == null ? PACKAGING : packaging);
 
             commands.add(command);
         }

@@ -20,15 +20,18 @@ public class GenerateCommand extends GenerateOptions implements Runnable {
     public void run() {
         Path path = getJarsPath();
         File file = getJar();
+        String version = getVersion();
+        String groupId = getGroupId();
+        String packaging = getPackaging();
         if(path != null) {
             logger.info(path.toAbsolutePath());
-            ArtifactGenerator.execute(path);
-            logger.info(ArtifactGenerator.dependencies(path));
+            ArtifactGenerator.execute(path, groupId,version,packaging);
+            logger.info(ArtifactGenerator.dependencies(path, groupId, version));
         }
         if(file != null) {
             logger.info(file.getAbsolutePath());
-            ArtifactGenerator.execute(file);
-            logger.info(ArtifactGenerator.dependency(file));
+            ArtifactGenerator.execute(file, groupId,version,packaging);
+            logger.info(ArtifactGenerator.dependency(file, groupId, version));
         }
     }
 
