@@ -8,7 +8,7 @@ java -jar file.jar -h
 mvn clean install
 
 ## support
-Windows 7, macOS X(unix). Requires an installed maven.
+windows, macOS X(unix). Requires an installed maven.
 
 ## system testing
 
