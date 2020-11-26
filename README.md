@@ -13,8 +13,9 @@ java -jar file.jar -h
   - -P, --artifact-packaging=\<packaging>
   - -v, --version
   - -V, --artifact-version=\<version>
- 
-### requires -p or -f and -g, default -V 1.0.0 and -P jar
+  
+requires -p or -f and -g, default -V 1.0.0 and -P jar
+
 ### path jars
 java -jar file.jar -p path_to_jars -g com.test -V 1.2.3 -P jar
 ### jar
