@@ -2,7 +2,7 @@
  Console program to generate maven artifacts in the local repository, and configure dependencies for pom.xml, based on the path to the jars.
  
 ## help
-java -jar file.jar -h
+java -jar maven-artifact-generator-X.X.X.jar -h
 
 ## use
 ### options
@@ -18,9 +18,9 @@ requires -p or -f and -g, default -V 1.0.0 and -P jar
 
 ### example
 #### path jars
-java -jar file.jar -p path_to_jars -g com.test -V 1.2.3 -P jar
+java -jar maven-artifact-generator-X.X.X.jar -p path_to_jars -g com.test -V 1.2.3 -P jar
 #### jar
-java -jar file.jar -f file_jar -g com.test -V 1.2.3 -P jar
+java -jar maven-artifact-generator-X.X.X.jar -f file_jar -g com.test -V 1.2.3 -P jar
 
 This will generate an artifact in the local maven repository, and generate dependecies for pom.xml in gen.log
 
