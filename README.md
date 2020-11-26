@@ -23,7 +23,7 @@ java -jar maven-artifact-generator-X.X.X.jar -p path_to_jars -g com.test -V 1.2.
 java -jar maven-artifact-generator-X.X.X.jar -f file_jar -g com.test -V 1.2.3 -P jar
 
 This will generate an artifact in the local maven repository, and generate dependecies for pom.xml in gen.log.
-ArtifactId is the name of the jar file. is the name of the jar file.
+ArtifactId is the name of the jar file.
 
 ## build
 mvn clean install
