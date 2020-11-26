@@ -4,11 +4,19 @@
 ## help
 java -jar file.jar -h
 
+## using - requires -p or -f and -g
+
+### path jars
+java -jar file.jar -p path_to_jars -g com.test -V 1.0.0 -P jar
+
+### jar
+java -jar file.jar -f jar_file -g com.test -V 1.0.0 -P jar
+
 ## build
 mvn clean install
 
 ## support
-windows, macOS X(unix). Requires an installed maven.
+windows, macOS X(unix), equires an installed maven
 
 ## system testing
 
