@@ -1,5 +1,5 @@
 # maven-artifact-generator
- Console program to generate maven artifacts in the local repository, and configure dependency for pom.xml, based on the path to the jars.
+ Console program to generate maven artifacts in the local repository, and configure dependencies for pom.xml, based on the path to the jars.
  
 ## help
 java -jar file.jar -h
