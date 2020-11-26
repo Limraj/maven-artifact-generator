@@ -3,3 +3,9 @@
  
 ## help
 java -jar file.jar -h
+
+## build
+mvn clean install
+
+## support
+Windows and Linux
