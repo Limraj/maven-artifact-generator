@@ -11,7 +11,6 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.jar.JarEntry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -116,8 +115,9 @@ public class ArtifactGenerator {
                     "-DartifactId={3} " +
                     "-Dversion={4} " +
                     "-Dpackaging={5} " +
-                    "-DgeneratePom=true", file.getParent(), file.getName(), groupId
-                    , file.getName().replace(".jar",""), version == null ? VERSION : version,
+                    "-DgeneratePom=true", file.getParent() == null ? File.pathSeparator : file.getParent(),
+                    file.getName(), groupId, file.getName().replace(".jar",""),
+                    version == null ? VERSION : version,
                     packaging == null ? PACKAGING : packaging);
 
             commands.add(command);
