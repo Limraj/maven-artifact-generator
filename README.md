@@ -29,7 +29,7 @@ ArtifactId is the name of the jar file.
 mvn clean install
 
 ## support
-windows, macOS X(unix), equires an installed maven
+windows 7, macOS X(unix), equires an installed maven
 
 ## system testing
 
